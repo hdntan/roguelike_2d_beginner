@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 2315cc0495cb2054ea5dd392c1cff51e
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299017
+  packageName: 2D Roguelike | Complete Project
+  packageVersion: 1.0
+  assetPath: Assets/Roguelike2D/TutorialAssets/Sprites/SandTheme.png
+  uploadId: 699666
 TextureImporter:
   internalIDToNameTable:
   - first:

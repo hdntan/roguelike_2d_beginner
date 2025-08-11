@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 56b5efc0288bc754883726732f33cc3c
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299017
+  packageName: 2D Roguelike | Complete Project
+  packageVersion: 1.0
+  assetPath: Assets/Roguelike2D/TutorialAssets/Sprites/SnowTheme.png
+  uploadId: 699666
 TextureImporter:
   internalIDToNameTable:
   - first:

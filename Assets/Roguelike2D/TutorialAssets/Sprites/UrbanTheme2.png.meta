@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: bf28ec10b7863594a841829ceb9f7d14
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299017
+  packageName: 2D Roguelike | Complete Project
+  packageVersion: 1.0
+  assetPath: Assets/Roguelike2D/TutorialAssets/Sprites/UrbanTheme2.png
+  uploadId: 699666
 TextureImporter:
   internalIDToNameTable:
   - first:
