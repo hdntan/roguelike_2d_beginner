@@ -24,7 +24,7 @@ public class BoardManager : MonoBehaviour
     private Grid grid;
 
     // Hàm này được gọi một lần khi bắt đầu game
-    void Start()
+    public void Init()
     {
         // Lấy component Tilemap từ các thành phần con của GameObject
         this.tileMap = transform.GetComponentInChildren<Tilemap>();
@@ -35,8 +35,7 @@ public class BoardManager : MonoBehaviour
 
         // Tạo tilemap và dữ liệu cho từng ô
         this.CreateTileMap();
-        // Spawn nhân vật tại vị trí (1, 1)
-        player.Spawn(this, new Vector2Int(1, 1));
+    
     }
 
     // Tạo tilemap và dữ liệu cho từng ô

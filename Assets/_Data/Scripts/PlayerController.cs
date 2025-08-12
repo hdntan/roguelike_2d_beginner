@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             if (cellData != null && cellData.Passable)
             {
                 // Di chuyển tới ô mới
-
+                GameManager.Instance.turnManager.Tick(); // Tăng lượt chơi
                 this.MoveTo(newCellTarget);
             }
             else
