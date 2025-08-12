@@ -76,6 +76,17 @@ public class BoardManager : MonoBehaviour
     {
         return this.grid.GetCellCenterWorld((Vector3Int)cellIndex);
     }
+
+    public CellData GetCellData(Vector2Int cellIndex)
+    {
+        if (cellIndex.x < 0 || cellIndex.x >= widthTileMap ||
+           cellIndex.y < 0 || cellIndex.y >= heightTileMap)
+        {
+            Debug.LogError($"Vị trí ô {cellIndex} không hợp lệ!");
+            return null;
+        }
+        return this.boardData[cellIndex.x, cellIndex.y];
+    }
 }
 
 // Lưu dữ liệu cho từng ô trên bản đồ
