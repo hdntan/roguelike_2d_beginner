@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 00000000000000000000000000000000
+  productGUID: 77c41d71e452f41c9b3a89c0218d8ff7
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -696,7 +696,7 @@ PlayerSettings:
   cloudProjectId: 1fc5cb4d-3bcf-4be2-8d8c-6e07c292dc02
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
+  projectName: roguelike_2d
   organizationId: hdntan
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
