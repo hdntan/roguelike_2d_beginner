@@ -19,6 +19,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] protected Tile[] wallTiles;
     // Tham chiếu tới PlayerController để spawn nhân vật (gán trong Inspector)
     [SerializeField] protected PlayerController player;
+     [SerializeField] protected GameObject itemPrefab;
 
     // Tham chiếu tới Grid dùng để chuyển đổi vị trí ô sang vị trí thế giới
     private Grid grid;
@@ -35,6 +36,8 @@ public class BoardManager : MonoBehaviour
 
         // Tạo tilemap và dữ liệu cho từng ô
         this.CreateTileMap();
+
+        this.SpawnItemAtCell(new Vector2Int(3, 3)); // Ví dụ spawn item tại ô (3, 3)
     
     }
 
@@ -86,6 +89,31 @@ public class BoardManager : MonoBehaviour
         }
         return this.boardData[cellIndex.x, cellIndex.y];
     }
+
+    public void SpawnItemAtCell(Vector2Int cell)
+    {
+        // Kiểm tra vị trí hợp lệ
+        var cellData = this.GetCellData(cell);
+        if (cellData == null & cellData.Passable == false)
+        {
+            Debug.LogError("Vị trí spawn item không hợp lệ!");
+            return;
+        }
+
+        // Tạo item tại vị trí ô trên bản đồ
+        Vector3 spawnPos = this.CellToWorld(cell);
+        GameObject itemObj = Instantiate(itemPrefab, spawnPos, Quaternion.identity);
+
+        // Gán item vào ContainedObject của CellData (item phải implement ICellObject)
+        ICellObject cellObject = itemObj.GetComponent<ICellObject>();
+        if (cellObject == null)
+        {
+            Debug.LogError("Prefab item không có component ICellObject!");
+            Destroy(itemObj);
+            return;
+        }
+        cellData.ContainedObject = cellObject;
+    }
 }
 
 // Lưu dữ liệu cho từng ô trên bản đồ
@@ -93,4 +121,8 @@ public class BoardManager : MonoBehaviour
 public class CellData
 {
     public bool Passable; // Ô có thể đi qua
+
+    // Vật thể nằm trên ô (có thể là quái, vật phẩm, bẫy...)
+    public ICellObject ContainedObject;
 }
+

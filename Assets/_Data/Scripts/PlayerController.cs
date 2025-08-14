@@ -42,9 +42,9 @@ public class PlayerController : MonoBehaviour
                 this.isMoving = false;
                 animator.SetBool("Moving", false);
                 var cellData = this.board.GetCellData(this.cellPosition);
-                // Nếu có vật thể trong ô thì có thể xử lý tại đây (đã comment lại)
-                // if(cellData.ContainedObject != null)
-                //     cellData.ContainedObject.PlayerEntered();
+                //Nếu có vật thể trong ô thì có thể xử lý tại đây (đã comment lại)
+                if(cellData.ContainedObject != null)
+                    cellData.ContainedObject.PlayerEntered();
             }
 
             return; // Không thực hiện các hành động khác khi đang di chuyển
