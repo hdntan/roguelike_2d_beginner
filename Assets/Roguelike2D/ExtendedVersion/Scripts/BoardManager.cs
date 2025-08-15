@@ -17,10 +17,11 @@ namespace Roguelike2D
         /// </summary>
         public class CellData
         {
-            public bool Passable;
-            public List<CellObject> ContainedObjects = new();
-            public CellObject UniqueCellObject = null;
+            public bool Passable; // Ô này có thể đi qua không
+            public List<CellObject> ContainedObjects = new(); // Danh sách các vật thể trong ô này
+            public CellObject UniqueCellObject = null; // Vật thể duy nhất (ví dụ: cửa ra, boss...)
 
+            // Kiểm tra xem tất cả vật thể trong ô có cho phép người chơi vào không
             public bool PlayerWantToEnter()
             {
                 foreach (var cellObject in ContainedObjects)
@@ -28,10 +29,10 @@ namespace Roguelike2D
                     if (!cellObject.PlayerWantToEnter())
                         return false;
                 }
-
                 return true;
             }
 
+            // Gọi hàm PlayerEntered() của tất cả vật thể trong ô khi người chơi bước vào
             public void PlayerEntered()
             {
                 foreach (var cellObject in ContainedObjects)
@@ -40,25 +41,26 @@ namespace Roguelike2D
                 }
             }
 
+            // Ô này có vật thể nào không
             public bool HasObjects() => ContainedObjects.Count > 0;
 
+            // Thêm vật thể vào ô, kiểm tra nếu là vật thể duy nhất
             public void AddObject(CellObject obj)
             {
                 if (obj.IsUnique())
                 {
                     if (UniqueCellObject != null)
                     {
-                        //we tried to add a unique cell object to a cell already containing one, this shouldn't happen! Error out
+                        // Nếu đã có vật thể duy nhất thì báo lỗi
                         Debug.LogError($"Tried to the unique cell object {obj.name} to a cell already containing one {UniqueCellObject.name}");
                         return;
                     }
-
                     UniqueCellObject = obj;
                 }
-            
                 ContainedObjects.Add(obj);
             }
 
+            // Kiểm tra ô có vật thể có thể bị tấn công không (ví dụ: quái vật)
             public bool HaveAttackable(out AttackableCellObject attackable)
             {
                 if (UniqueCellObject != null && UniqueCellObject is AttackableCellObject obj)
@@ -66,19 +68,19 @@ namespace Roguelike2D
                     attackable = obj;
                     return true;
                 }
-
                 attackable = null;
                 return false;
             }
 
+            // Xóa vật thể khỏi ô
             public void RemoveObject(CellObject obj)
             {
                 if (obj == UniqueCellObject)
                     UniqueCellObject = null;
-            
                 ContainedObjects.Remove(obj);
             }
 
+            // Xóa tất cả vật thể trong ô (dùng khi reset map)
             public void ClearObjects()
             {
                 foreach (var cellObject in ContainedObjects)
@@ -89,28 +91,28 @@ namespace Roguelike2D
             }
         }
     
-        public BoxCollider2D CameraConfinerBound;
+        public BoxCollider2D CameraConfinerBound; // Giới hạn camera
 
-        private Tilemap m_Tilemap;
-        private Grid m_Grid;
-        private CellData[,] m_BoardData;
-        private WorldSettings.LevelData m_CurrentLevelData;
-        private List<Vector2Int> m_EmptyCellsList;
-        private List<CellObject> m_CurrentAvailableObjectList;
-        private List<Enemy> m_CurrentAvailableEnemyList;
+        [SerializeField]private Tilemap m_Tilemap; // Tilemap để vẽ bản đồ
+        [SerializeField]private Grid m_Grid; // Grid để chuyển đổi vị trí ô <-> thế giới
+        [SerializeField]private CellData[,] m_BoardData; // Dữ liệu từng ô trên bản đồ
+        [SerializeField]private WorldSettings.LevelData m_CurrentLevelData; // Dữ liệu level hiện tại
+        [SerializeField]private List<Vector2Int> m_EmptyCellsList; // Danh sách các ô trống (dùng để spawn vật thể)
+        [SerializeField]private List<CellObject> m_CurrentAvailableObjectList; // Danh sách vật thể có thể spawn
+        [SerializeField]private List<Enemy> m_CurrentAvailableEnemyList; // Danh sách quái có thể spawn
 
-        private int m_Width;
-        private int m_Height;
+        private int m_Width; // Chiều rộng bản đồ
+        private int m_Height; // Chiều cao bản đồ
 
+        // Hàm Awake lấy các component cần thiết
         public void Awake()
         {
             m_Tilemap = GetComponentInChildren<Tilemap>();
             m_Grid = GetComponent<Grid>();
         }
 
-    
         /// <summary>
-        /// Init the board, generating a new board randomly based on the level in CurrentLevel
+        /// Khởi tạo bản đồ, sinh ngẫu nhiên dựa trên dữ liệu level
         /// </summary>
         public void Init()
         {
@@ -126,13 +128,12 @@ namespace Roguelike2D
         
             m_BoardData = new CellData[m_Width, m_Height];
 
-            //Generate the board starting to -20 in x and y and going up to +20 in both direction. This allows to generate
-            //some ground to extend outside the screen for visuals.
+            // Sinh tilemap, mở rộng ra ngoài màn hình để tạo hiệu ứng nền
             for (int y = -20; y < m_Height + 20; ++y)
             {
                 for(int x = -20; x < m_Width + 20; ++x)
                 {
-                    //if we are outside of the play area, we just set some random ground tile to fill the empty space
+                    // Nếu ngoài vùng chơi, đặt tile nền ngẫu nhiên
                     if (x < 0 || y < 0 || x >= m_Width || y >= m_Height)
                     {
                         m_Tilemap.SetTile(new Vector3Int(x, y, 0), theme.GetRandomGround());
@@ -142,7 +143,7 @@ namespace Roguelike2D
                     Tile tile;
                     m_BoardData[x, y] = new CellData();
 
-                    //outside border is blocking impassable walls
+                    // Viền ngoài là tường không thể đi qua
                     if (x == 0 || y == 0 || x == m_Width - 1 || y == m_Height - 1)
                     {
                         tile = theme.GetRandomBlocking();
@@ -150,10 +151,9 @@ namespace Roguelike2D
                     }
                     else
                     {
-                        //for now set it as normal ground and add that tile to the empty list
+                        // Các ô còn lại là nền, có thể đi qua, thêm vào danh sách ô trống
                         tile = theme.GetRandomGround();
                         m_BoardData[x, y].Passable = true;
-                    
                         m_EmptyCellsList.Add(new Vector2Int(x,y));
                     }
 
@@ -161,25 +161,25 @@ namespace Roguelike2D
                 }
             }
         
-            //remove the spawn tile from the empty list, as this is occupied by the player
+            // Xóa ô spawn của player khỏi danh sách ô trống
             m_EmptyCellsList.Remove(new Vector2Int(1, 1));
         
-            //add the exit cell (removing it from empty cell too)
+            // Thêm ô exit (cửa ra) và xóa khỏi ô trống
             var inst = Instantiate(theme.ExitCellPrefab);
             Vector2Int endCoord = new Vector2Int(m_Width - 2, m_Height - 2);
             AddObject(inst, endCoord);
             m_EmptyCellsList.Remove(endCoord);
         
-            GenerateWall();
-            GenerateObject();
-            GenerateEnemies();
+            GenerateWall();    // Sinh tường ngẫu nhiên trong map
+            GenerateObject();  // Sinh vật phẩm, vật thể
+            GenerateEnemies(); // Sinh quái vật
         
-            UpdateCameraConfiner();
+            UpdateCameraConfiner(); // Cập nhật vùng giới hạn camera
         }
 
+        // Xóa sạch dữ liệu bản đồ (dùng khi load map mới)
         public void Clean()
         {
-            //no board data to cleanup
             if (m_BoardData == null) return;
         
             int width = m_CurrentLevelData.Width;
@@ -195,6 +195,7 @@ namespace Roguelike2D
             }
         }
 
+        // Sinh vật phẩm (item, vật thể) ngẫu nhiên trên map
         void GenerateObject()
         {
             int itemCount = GameManager.Instance.WorldSettings.Items.GetRandomItemCount(GameManager.Instance.CurrentLevel);
@@ -212,6 +213,7 @@ namespace Roguelike2D
             }
         }
 
+        // Sinh tường ngẫu nhiên trong map (không phải viền)
         void GenerateWall()
         {
             int wallCount = Random.Range(m_CurrentLevelData.LowestWallCount, m_CurrentLevelData.HighestWallCount+1);
@@ -228,6 +230,7 @@ namespace Roguelike2D
             }
         }
 
+        // Sinh quái vật ngẫu nhiên trên map
         void GenerateEnemies()
         {
             int enemyCount = GameManager.Instance.WorldSettings.Enemies.GetRandomEnemyCount(GameManager.Instance.CurrentLevel);
@@ -245,18 +248,20 @@ namespace Roguelike2D
             }
         }
 
+        // Cập nhật vùng giới hạn camera theo kích thước map
         void UpdateCameraConfiner()
         {
             Vector3 centerPos = CellToWorld(new Vector2Int(m_CurrentLevelData.Width / 2, m_CurrentLevelData.Height / 2));
 
             if (m_CurrentLevelData.Width % 2 == 0)
             {
-                //even width mean the center is between cell not in a cell, so offset
+                // Nếu chiều rộng chẵn thì dịch tâm sang trái nửa ô
                 centerPos.x -= m_Tilemap.cellSize.x * 0.5f;
             }
 
             if (m_CurrentLevelData.Height % 2 == 0)
             {
+                // Nếu chiều cao chẵn thì dịch tâm xuống dưới nửa ô
                 centerPos.y -= m_Tilemap.cellSize.y * 0.5f;
             }
 
@@ -267,6 +272,7 @@ namespace Roguelike2D
             GameManager.Instance.CameraConfiner.InvalidateBoundingShapeCache();
         }
 
+        // Thêm vật thể vào ô (và gọi Init cho vật thể)
         void AddObject(CellObject obj, Vector2Int coord)
         {
             CellData data = m_BoardData[coord.x, coord.y];
@@ -275,32 +281,36 @@ namespace Roguelike2D
             obj.Init(coord);
         }
 
+        // Chuyển vị trí ô sang vị trí thế giới
         public Vector3 CellToWorld(Vector2Int cellIndex)
         {
             return m_Grid.GetCellCenterWorld((Vector3Int)cellIndex);
         }
 
+        // Lấy dữ liệu ô tại vị trí chỉ định
         public CellData GetCellData(Vector2Int cellIndex)
         {
-        
             if (cellIndex.x < 0 || cellIndex.x >= m_CurrentLevelData.Width
                                 || cellIndex.y < 0 || cellIndex.y >= m_CurrentLevelData.Height)
             {
                 return null;
             }
-
             return m_BoardData[cellIndex.x, cellIndex.y];
         }
+
+        // Lấy tile tại vị trí ô
         public Tile GetCellTile(Vector2Int cellIndex)
         {
             return m_Tilemap.GetTile<Tile>((Vector3Int)cellIndex);
         }
 
+        // Đặt tile tại vị trí ô
         public void SetCellTile(Vector2Int cellIndex, Tile tile)
         {
             m_Tilemap.SetTile((Vector3Int)cellIndex, tile);
         }
     
+        // Lưu trạng thái bản đồ ra file (dùng cho save game)
         public void Save(BinaryWriter writer)
         {
             //save the board size
@@ -333,6 +343,7 @@ namespace Roguelike2D
             }
         }
 
+        // Đọc trạng thái bản đồ từ file (dùng cho load game)
         public void Load(BinaryReader reader)
         {
             Clean();
@@ -348,27 +359,27 @@ namespace Roguelike2D
             {
                 for (int x = -20; x < m_Width + 20; ++x)
                 {
-                    //if we are outside of the play area, we just set some random ground tile to fill the empty space
+                    // Nếu ngoài vùng chơi, đặt tile nền ngẫu nhiên
                     if (x < 0 || y < 0 || x >= m_Width || y >= m_Height)
                     {
                         m_Tilemap.SetTile(new Vector3Int(x, y, 0), GameManager.Instance.WorldSettings.Theme.GetRandomGround());
                         continue;
                     }
                 
-                    //setting back the tile by reading its id and asking the database for the right tile 
+                    // Đọc tên tile và lấy tile từ database
                     string tileId = reader.ReadString();
                     var tile = GameManager.Instance.ReferenceDatabase.GetTileFromInstanceID(tileId);
                     m_Tilemap.SetTile(new Vector3Int(x,y,0), tile);
                 
                     var passable = reader.ReadBoolean();
                 
-                    //initializing the data
+                    // Khởi tạo dữ liệu ô
                     m_BoardData[x, y] = new CellData()
                     {
                         Passable = passable
                     };
 
-                    //Adding back objects and loading it (things like walls or enemy need to put back their health etc.)
+                    // Thêm lại các vật thể và load trạng thái (ví dụ: máu quái vật)
                     int objectCount = reader.ReadInt32();
                     for (int i = 0; i < objectCount; ++i)
                     {
@@ -380,7 +391,7 @@ namespace Roguelike2D
                 }
             }
         
-            //retrieve the world data, the current level will have been set by the GameManager load function
+            // Lấy lại dữ liệu level hiện tại
             m_CurrentLevelData = GameManager.Instance.WorldSettings.GetLevelDataForLevel(GameManager.Instance.CurrentLevel);
             UpdateCameraConfiner();
         }

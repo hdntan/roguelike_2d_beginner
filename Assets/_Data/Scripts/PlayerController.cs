@@ -43,8 +43,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("Moving", false);
                 var cellData = this.board.GetCellData(this.cellPosition);
                 //Nếu có vật thể trong ô thì có thể xử lý tại đây (đã comment lại)
-                if(cellData.ContainedObject != null)
-                    cellData.ContainedObject.PlayerEntered();
+                cellData?.PlayerEntered();
             }
 
             return; // Không thực hiện các hành động khác khi đang di chuyển
@@ -120,6 +119,7 @@ public class PlayerController : MonoBehaviour
         if (hasMoved)
         {
             CellData cellData = board.GetCellData(newCellTarget);
+            Debug.Log("cellData" + cellData); // In ra thông tin ô mới
             // Nếu ô mới tồn tại và có thể đi qua
             if (cellData != null && cellData.Passable)
             {
@@ -131,6 +131,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                Debug.LogError($"Ô {newCellTarget} không hợp lệ hoặc không thể đi qua!"); // In ra lỗi nếu ô không hợp lệ
+                Debug.LogError($"Passable {cellData.Passable} không thể đi qua!"); // In ra lỗi nếu ô không thể đi qua
                 // Nếu không đi qua được thì in ra log
                 Debug.Log("Ô không thể đi qua!");
             }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public BoardManager boardManager;
     public PlayerController playerController;
     public TurnManager turnManager;
+
+    public int foodAmount = 100;
     private void Awake()
     {
         if (Instance != null)
@@ -29,5 +31,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void ChangeFoodAmount(int amount)
+    {
+        this.foodAmount += amount;
+      
     }
 }
