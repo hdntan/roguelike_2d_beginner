@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoardManager board;
     // Vị trí hiện tại của người chơi trên lưới (tọa độ ô)
     [SerializeField] private Vector2Int cellPosition;
+    public Vector2Int CellPosition => cellPosition; // Thuộc tính để truy cập vị trí ô
     // Vị trí đích trong thế giới thực (dùng để di chuyển mượt)
     [SerializeField] private Vector3 moveTarget;
 

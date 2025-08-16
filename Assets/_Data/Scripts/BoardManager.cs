@@ -34,7 +34,7 @@ public class BoardManager : MonoBehaviour
     public void Init()
     {
         this.emptyCellsList = new List<Vector2Int>();
-       
+
         // Lấy component Tilemap từ các thành phần con của GameObject
         this.tileMap = transform.GetComponentInChildren<Tilemap>();
         // Lấy component Grid từ các thành phần con của GameObject
@@ -50,6 +50,7 @@ public class BoardManager : MonoBehaviour
 
 
         this.GenerateObject();  // Sinh vật phẩm, vật thể
+        this.GenerateEnemies(); // Sinh quái vật
         // this.SpawnItemAtCell(new Vector2Int(3, 3)); // Ví dụ spawn item tại ô (3, 3)
 
     }
@@ -129,6 +130,24 @@ public class BoardManager : MonoBehaviour
             Debug.Log($"Đã tạo vật thể {newObject.name} tại ô {coord}");
         }
     }
+
+          void GenerateEnemies()
+        {
+            int enemyCount = this.currentAvailableEnemyList.Count;
+         //   GameManager.Instance.WorldSettings.Enemies.GetRandomEnemies(ref m_CurrentAvailableEnemyList, GameManager.Instance.CurrentLevel);
+        
+            for (int i = 0; i < enemyCount; ++i)
+            {
+                int randomIndex = Random.Range(0, this.emptyCellsList.Count);
+                Vector2Int coord = this.emptyCellsList[randomIndex];
+            
+                this.emptyCellsList.RemoveAt(randomIndex);
+            
+                Enemy newEnemy = Instantiate(this.currentAvailableEnemyList[Random.Range(0, this.currentAvailableEnemyList.Count)]);
+                AddObject(newEnemy, coord);
+            }
+        }
+
 
     void AddObject(CellObject obj, Vector2Int coord)
     {

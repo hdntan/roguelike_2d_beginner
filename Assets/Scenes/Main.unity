@@ -420,7 +420,8 @@ MonoBehaviour:
   currentAvailableObjectList:
   - {fileID: 2185801532222749895, guid: b0af8e419f4144e1096c9300ef12de22, type: 3}
   - {fileID: 9103638748953364966, guid: 57d00889769ee4417ab7bd429dd7301e, type: 3}
-  currentAvailableEnemyList: []
+  currentAvailableEnemyList:
+  - {fileID: 5970019106431302440, guid: a56eb8254524b4917bdc064d146666f6, type: 3}
 --- !u!1 &1720858154
 GameObject:
   m_ObjectHideFlags: 0
