@@ -1,0 +1,11 @@
+{
+    "asset": "38ed052e5993e460e820d98b207e1327",
+    "fileName": "0198b398-7357-774b-83ee-e7b0aa8cc059.pose.json",
+    "prompt": "fly",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 279850059,
+    "w3CTraceId": "ce297f9cd6ae9fdf3a1361878b3aeec9",
+    "isTrimmed": false
+}

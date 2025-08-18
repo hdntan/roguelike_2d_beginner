@@ -29,6 +29,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private List<Vector2Int> emptyCellsList; // Danh sách các ô trống (dùng để spawn vật thể)
     [SerializeField] private List<CellObject> currentAvailableObjectList; // Danh sách vật thể có thể spawn
     [SerializeField] private List<Enemy> currentAvailableEnemyList; // Danh sách quái có thể spawn
+    [SerializeField] protected WallObject wallObjectPrefab; // Prefab tường để spawn
 
     // Hàm này được gọi một lần khi bắt đầu game
     public void Init()
@@ -51,6 +52,7 @@ public class BoardManager : MonoBehaviour
 
         this.GenerateObject();  // Sinh vật phẩm, vật thể
         this.GenerateEnemies(); // Sinh quái vật
+        this.GenerateWall();    // Sinh tường
         // this.SpawnItemAtCell(new Vector2Int(3, 3)); // Ví dụ spawn item tại ô (3, 3)
 
     }
@@ -112,7 +114,19 @@ public class BoardManager : MonoBehaviour
         return this.boardData[cellIndex.x, cellIndex.y];
     }
 
-    void GenerateObject()
+          public Tile GetCellTile(Vector2Int cellIndex)
+        {
+            return this.tileMap.GetTile<Tile>((Vector3Int)cellIndex);
+        }
+
+         // Đặt tile tại vị trí ô
+        public void SetCellTile(Vector2Int cellIndex, Tile tile)
+        {
+            this.tileMap.SetTile((Vector3Int)cellIndex, tile);
+        }
+    
+
+   protected  void GenerateObject()
     {
         int itemCount = this.currentAvailableObjectList.Count;
         Debug.Log($"Tạo {this.currentAvailableObjectList.Count} vật thể ngẫu nhiên");
@@ -126,12 +140,12 @@ public class BoardManager : MonoBehaviour
             this.emptyCellsList.RemoveAt(randomIndex);
 
             var newObject = Instantiate(this.currentAvailableObjectList[Random.Range(0, this.currentAvailableObjectList.Count)]);
-            AddObject(newObject, coord);
+            AddObject(newObject, coord, true);
             Debug.Log($"Đã tạo vật thể {newObject.name} tại ô {coord}");
         }
     }
 
-          void GenerateEnemies()
+        protected  void GenerateEnemies()
         {
             int enemyCount = this.currentAvailableEnemyList.Count;
          //   GameManager.Instance.WorldSettings.Enemies.GetRandomEnemies(ref m_CurrentAvailableEnemyList, GameManager.Instance.CurrentLevel);
@@ -144,14 +158,33 @@ public class BoardManager : MonoBehaviour
                 this.emptyCellsList.RemoveAt(randomIndex);
             
                 Enemy newEnemy = Instantiate(this.currentAvailableEnemyList[Random.Range(0, this.currentAvailableEnemyList.Count)]);
-                AddObject(newEnemy, coord);
+                AddObject(newEnemy, coord, false);
+            }
+        }
+
+          protected  void GenerateWall()
+        {
+           
+
+            for (int i = 0; i < 4; ++i)
+            {
+                int randomIndex = Random.Range(0, this.emptyCellsList.Count);
+                Vector2Int coord = this.emptyCellsList[randomIndex];
+            
+                this.emptyCellsList.RemoveAt(randomIndex);
+            
+                WallObject newWall = Instantiate(wallObjectPrefab);
+                AddObject(newWall, coord, false);
             }
         }
 
 
-    void AddObject(CellObject obj, Vector2Int coord)
+
+    void AddObject(CellObject obj, Vector2Int coord, bool passable)
     {
+        
         CellData data = this.boardData[coord.x, coord.y];
+        data.Passable = passable; // Đặt ô là có thể đi qua nếu cần
         obj.transform.position = this.CellToWorld(coord);
         data.AddObject(obj);
         obj.Init(coord);

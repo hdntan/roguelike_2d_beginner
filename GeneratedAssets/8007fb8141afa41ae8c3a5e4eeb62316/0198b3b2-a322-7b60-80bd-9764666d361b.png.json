@@ -1,0 +1,20 @@
+{
+    "asset": "8007fb8141afa41ae8c3a5e4eeb62316",
+    "fileName": "0198b3b2-a322-7b60-80bd-9764666d361b.png",
+    "prompt": "generate a sprite sheet for flying monster resembling a dragon, designed in Studio Ghibli style, with 6 frames for a flying animation.",
+    "negativePrompt": "",
+    "model": "dae8abb6-f5f1-46c4-a60d-98e40887df1b",
+    "modelName": "Design Sheet",
+    "customSeed": -1,
+    "w3CTraceId": "86b8d7a8cc49db3c4148c6310d39e6cc",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

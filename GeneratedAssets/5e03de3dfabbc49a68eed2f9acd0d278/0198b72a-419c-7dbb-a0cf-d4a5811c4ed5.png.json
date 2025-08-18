@@ -1,0 +1,29 @@
+{
+    "asset": "5e03de3dfabbc49a68eed2f9acd0d278",
+    "fileName": "0198b72a-419c-7dbb-a0cf-d4a5811c4ed5.png",
+    "prompt": "vẽ lại chính xác theo image Reference tôi cung cấp, và vẽ nó đang trạng thái đang di chuyển",
+    "negativePrompt": "",
+    "model": "9119be98-fcff-405c-a1af-375ec1d026cd",
+    "modelName": "Little Monster Maker",
+    "customSeed": -1,
+    "w3CTraceId": "ff7a5fffbec938233eb9362738fae648",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 7,
+                "doodle": [],
+                "label": "Image",
+                "strength": 0.25,
+                "invertStrength": false,
+                "assetReferenceGuid": "a3f9bed5b4a034c109107e98ed5fcf03"
+            }
+        ]
+    },
+    "upscaleFactor": 0
+}

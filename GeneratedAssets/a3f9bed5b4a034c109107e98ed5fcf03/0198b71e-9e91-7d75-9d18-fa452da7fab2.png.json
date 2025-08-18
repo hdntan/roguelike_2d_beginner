@@ -1,0 +1,29 @@
+{
+    "asset": "a3f9bed5b4a034c109107e98ed5fcf03",
+    "fileName": "0198b71e-9e91-7d75-9d18-fa452da7fab2.png",
+    "prompt": "A dark and menacing boss character inspired by Elden Ring, wearing tattered armor with glowing red cracks, wielding a massive sword, and surrounded by an aura of dark mist",
+    "negativePrompt": "blurry, extra limbs, different character, background, shadows, watermark",
+    "model": "7f7b9460-c961-4bf8-a854-e164210cd1ff",
+    "modelName": "Game Characters",
+    "customSeed": 42317,
+    "w3CTraceId": "d949e82417ae10b440663fab5ef90071",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 6,
+                "doodle": [],
+                "label": "Pose",
+                "strength": 0.8999999761581421,
+                "invertStrength": false,
+                "assetReferenceGuid": "d88d406a227574367ad6f05aec468413"
+            }
+        ]
+    },
+    "upscaleFactor": 0
+}

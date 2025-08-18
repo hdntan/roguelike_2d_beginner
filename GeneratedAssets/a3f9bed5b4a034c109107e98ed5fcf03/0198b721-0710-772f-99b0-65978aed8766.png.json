@@ -1,0 +1,29 @@
+{
+    "asset": "a3f9bed5b4a034c109107e98ed5fcf03",
+    "fileName": "0198b721-0710-772f-99b0-65978aed8766.png",
+    "prompt": "A dark and menacing boss character inspired by Elden Ring, wearing tattered armor with glowing red cracks, wielding a massive sword, and surrounded by an aura of dark mist",
+    "negativePrompt": "blurry, extra limbs, different character, background, shadows, watermark,weapon",
+    "model": "9119be98-fcff-405c-a1af-375ec1d026cd",
+    "modelName": "Little Monster Maker",
+    "customSeed": -1,
+    "w3CTraceId": "0e8c71926171324d82ce70ff1f6f6a3c",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 6,
+                "doodle": [],
+                "label": "Pose",
+                "strength": 0.8999999761581421,
+                "invertStrength": false,
+                "assetReferenceGuid": "d88d406a227574367ad6f05aec468413"
+            }
+        ]
+    },
+    "upscaleFactor": 0
+}

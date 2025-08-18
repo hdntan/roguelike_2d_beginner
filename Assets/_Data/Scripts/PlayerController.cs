@@ -16,6 +16,22 @@ public class PlayerController : MonoBehaviour
     // Tốc độ di chuyển của người chơi
     [SerializeField] private float moveSpeed = 2f;
 
+         // Các chỉ số khởi đầu của nhân vật
+        public int startAttack = 1;
+        public int startDefense = 0;
+        public int startSpeed = 1;    
+        
+            // Các chỉ số hiện tại của nhân vật
+        private int currentAttack;
+        private int currentDefense;
+        private int currentSpeed;
+    
+        // Các thuộc tính chỉ đọc trả về chỉ số hiện tại
+    public int PlayerAttack => currentAttack;
+        public int PlayerDefense => currentDefense;
+        public int PlayerSpeed => currentSpeed;
+    
+
     // Tham chiếu tới Animator để điều khiển animation
     private Animator animator;
 
@@ -23,6 +39,16 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         this.animator = GetComponent<Animator>(); // Lấy component Animator
+    }
+
+    public void Init()
+    {
+        // Khởi tạo các chỉ số hiện tại bằng các chỉ số khởi đầu
+        this.currentAttack = this.startAttack;
+        this.currentDefense = this.startDefense;
+        this.currentSpeed = this.startSpeed;
+        this.board = GameManager.Instance.boardManager; // Lấy BoardManager từ GameManager
+
     }
 
     // Hàm Update được gọi mỗi frame
@@ -36,7 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             // Di chuyển vị trí thực tế của GameObject tới moveTarget với tốc độ moveSpeed
             transform.position = Vector3.MoveTowards(transform.position, this.moveTarget, this.moveSpeed * Time.deltaTime);
-          
+
             // Khi đã đến đích thì dừng di chuyển và tắt animation "Moving"
             if (transform.position == this.moveTarget)
             {
@@ -127,24 +153,34 @@ public class PlayerController : MonoBehaviour
                 // Tăng lượt chơi (tick)
                 GameManager.Instance.turnManager.Tick();
 
-                // Di chuyển tới ô mới (không ngay lập tức)
-                this.MoveTo(newCellTarget, false);
+    MoveTo(newCellTarget, false);
+                // if (cellData.containedObjects.Count == 0)
+                // {
+                //     MoveTo(newCellTarget, false);
+
+                // }
+                Debug.Log("ContainerObjects" + cellData.containedObjects.Count);
+                 if (cellData.HaveAttackable(out var attackable))
+                {
+                    // Attacking(attackable);
+                    // GameManager.Instance.TurnManager.PlayerAct(10); // Kết thúc lượt
+                }
+                // Nếu có vật thể đặc biệt cho phép vào (ví dụ: cửa, vật phẩm...)
+                // else if (cellData.PlayerWantToEnter())
+                // {
+                //     MoveTo(newCellTarget, false);
+                //     //GameManager.Instance.TurnManager.PlayerAct(10); // Kết thúc lượt
+                // }
             }
-            else
-            {
-                Debug.LogError($"Ô {newCellTarget} không hợp lệ hoặc không thể đi qua!"); // In ra lỗi nếu ô không hợp lệ
-                Debug.LogError($"Passable {cellData.Passable} không thể đi qua!"); // In ra lỗi nếu ô không thể đi qua
-                // Nếu không đi qua được thì in ra log
-                Debug.Log("Ô không thể đi qua!");
-            }
+
         }
     }
-    
+
     // Hàm xử lý hành động tấn công
     public virtual void Attack()
     {
         // Nếu nhấn phím Space thì thực hiện tấn công
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Player attacks!"); // In ra log
             this.animator.SetTrigger("Attack"); // Kích hoạt animation "Attack"

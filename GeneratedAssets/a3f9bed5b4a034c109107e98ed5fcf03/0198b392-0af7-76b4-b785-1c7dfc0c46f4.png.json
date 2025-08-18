@@ -1,0 +1,20 @@
+{
+    "asset": "a3f9bed5b4a034c109107e98ed5fcf03",
+    "fileName": "0198b392-0af7-76b4-b785-1c7dfc0c46f4.png",
+    "prompt": "generate a sprite a flying monster with style ghibli.Type of monster: Is it more like a dragon,Transparent background",
+    "negativePrompt": "extra legs",
+    "model": "9119be98-fcff-405c-a1af-375ec1d026cd",
+    "modelName": "Little Monster Maker",
+    "customSeed": -1,
+    "w3CTraceId": "4be498d0bfa498e7d7d9feb13a85aa0d",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

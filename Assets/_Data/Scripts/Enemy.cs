@@ -1,6 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : CellObject
+public class Enemy : AttackableCellObject
 {
     public int health = 3;
 
@@ -14,30 +15,31 @@ public class Enemy : CellObject
         this.animator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
+    // void Update()
+    // {
 
-        if (this.isMoving)
-        {
-            // Di chuyển vị trí thực tế của GameObject tới moveTarget với tốc độ moveSpeed
-            transform.position = Vector3.MoveTowards(transform.position, this.moveTarget, 3f * Time.deltaTime);
+    //     if (this.isMoving)
+    //     {
+    //         // Di chuyển vị trí thực tế của GameObject tới moveTarget với tốc độ moveSpeed
+    //         transform.position = Vector3.MoveTowards(transform.position, this.moveTarget, 3f * Time.deltaTime);
 
-            // Khi đã đến đích thì dừng di chuyển và tắt animation "Moving"
-            if (transform.position == this.moveTarget)
-            {
-                this.isMoving = false;
-                this.animator.SetBool("isMoving", false);
-                //var cellData = this.board.GetCellData(this.cellPosition);
-                //Nếu có vật thể trong ô thì có thể xử lý tại đây (đã comment lại)
-                // cellData?.PlayerEntered();
-            }
+    //         // Khi đã đến đích thì dừng di chuyển và tắt animation "Moving"
+    //         if (transform.position == this.moveTarget)
+    //         {
+    //             this.isMoving = false;
+    //             this.animator.SetBool("isMoving", false);
+    //             //var cellData = this.board.GetCellData(this.cellPosition);
+    //             //Nếu có vật thể trong ô thì có thể xử lý tại đây (đã comment lại)
+    //             // cellData?.PlayerEntered();
+    //         }
 
-            return; // Không thực hiện các hành động khác khi đang di chuyển
-        }
-    }
+    //         return; // Không thực hiện các hành động khác khi đang di chuyển
+    //     }
+    // }
 
     private void OnDestroy()
     {
+        this.RemoveFromBoard();
         GameManager.Instance.turnManager.OnTick -= TurnHappened;
     }
     public override void Init(Vector2Int coord)
@@ -48,46 +50,80 @@ public class Enemy : CellObject
 
     public override bool PlayerWantToEnter()
     {
-        this.currentHealth -= 1;
-        if (this.currentHealth <= 0)
-        {
-
-            Destroy(gameObject);
-
-        }
+        
         return false;
     }
 
-    bool MoveTo(Vector2Int coord)
-    {
-        var board = GameManager.Instance.boardManager;
-        var targetCell = board.GetCellData(coord);
+    // bool MoveTo(Vector2Int coord)
+    // {
+
+    //     var targetCell = GameManager.Instance.boardManager.GetCellData(coord);
 
 
-        if (targetCell == null
+    //     if (targetCell == null
+    //         || !targetCell.Passable
+    //         || targetCell.uniqueCellObject != null)
+    //     {
+    //         this.isMoving = false;
+    //         return false;
+    //     }
+
+    //     //remove enemy from current cell
+    //     CellData currentCell = GameManager.Instance.boardManager.GetCellData(this.cell);
+    //     Debug.Log($"Removing enemy from cell {currentCell} at position {this.cell}");
+    //     currentCell.RemoveObject(this);
+
+    //     //   //add it to the next cell
+    //     //   targetCell.ContainedObject = this;
+    //     this.cell = coord;
+    //     targetCell.AddObject(this);
+    //     this.moveTarget = GameManager.Instance.boardManager.CellToWorld(coord);
+    //     this.isMoving = true;
+    //     this.animator.SetBool("isMoving", true);
+
+
+
+    //     return true;
+    // }
+    
+    
+        bool MoveTo(Vector2Int coord)
+        {
+            var targetCell = GameManager.Instance.boardManager.GetCellData(coord);
+            Debug.Log($"Moving enemy to cell {targetCell} at position {coord}");
+
+            if (targetCell == null
             || !targetCell.Passable
             || targetCell.uniqueCellObject != null)
         {
-            this.isMoving = false;
             return false;
         }
+        
+            //remove enemy from current cell
+            var currentCell = GameManager.Instance.boardManager.GetCellData(this.cell);
+            currentCell.RemoveObject(this);
+        
+            // if(WalkSFX.Length > 0)
+            //     GameManager.Instance.PlayAudioSFX(WalkSFX[Random.Range(0, WalkSFX.Length)], transform.position);
+        
+            //added right away to the next cell, as other thing will test if that cell is free right now. The movement is
+            //only visual, internally the enemy is already on the new cell
+            this.cell = coord;
+            targetCell.AddObject(this);
 
-        //remove enemy from current cell
-        var currentCell = board.GetCellData(this.cell);
-        currentCell.RemoveObject(this);
+            // GameManager.Instance.MovingObjectSystem.AddMoveRequest(transform,  GameManager.Instance.Board.CellToWorld(coord),
+            //     4.0f, false, 1, isMidway =>
+            //     {
+            //         m_Animator.SetBool("Moving", false);
+            //     }, () =>
+            //     {
+            //         m_Animator.SetBool("Moving", true);
+            //     });
 
-        //   //add it to the next cell
-        //   targetCell.ContainedObject = this;
-        this.cell = coord;
-        targetCell.AddObject(this);
-        this.moveTarget = board.CellToWorld(coord);
-        this.isMoving = true;
-        this.animator.SetBool("isMoving", true);
+            return true;
+        }
 
 
-
-        return true;
-    }
     void TurnHappened()
     {
         var playerCell = GameManager.Instance.playerController.CellPosition; ;
@@ -144,4 +180,14 @@ public class Enemy : CellObject
         return MoveTo(this.cell + Vector2Int.down);
     }
 
+    public override void Damaged(int amount)
+    {
+        this.currentHealth -= amount;
+        if(this.currentHealth <= 0)
+        {
+         
+            Destroy(gameObject); // Xóa enemy khỏi game
+        }
+      
+    }
 }

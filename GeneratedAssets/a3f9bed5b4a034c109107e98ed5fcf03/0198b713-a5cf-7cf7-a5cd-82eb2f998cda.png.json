@@ -1,0 +1,29 @@
+{
+    "asset": "a3f9bed5b4a034c109107e98ed5fcf03",
+    "fileName": "0198b713-a5cf-7cf7-a5cd-82eb2f998cda.png",
+    "prompt": "Sprite of the SAME small green dragon, Ghibli/chibi style, side view facing right.\n64x64 pixels, transparent background. Keep consistent colors and proportions.\nThis is frame {N} of a 6-frame flying cycle: wings fully up, tail slightly down.",
+    "negativePrompt": "blurry, extra limbs, different character, background, shadows, watermark",
+    "model": "9119be98-fcff-405c-a1af-375ec1d026cd",
+    "modelName": "Little Monster Maker",
+    "customSeed": 42317,
+    "w3CTraceId": "a0233dd9eb5f8fbb4ef44c185cd83b5b",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 6,
+                "doodle": [],
+                "label": "Pose",
+                "strength": 0.8999999761581421,
+                "invertStrength": false,
+                "assetReferenceGuid": "86cbf57f9fda4472da9898d02253a7af"
+            }
+        ]
+    },
+    "upscaleFactor": 0
+}

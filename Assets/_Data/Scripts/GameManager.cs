@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public BoardManager boardManager;
     public PlayerController playerController;
     public TurnManager turnManager;
+    
+
 
     public int foodAmount = 100;
     private void Awake()
@@ -23,7 +25,8 @@ public class GameManager : MonoBehaviour
     {
         this.turnManager = new TurnManager();
         this.boardManager.Init();
-        this.playerController.Spawn(this.boardManager, new Vector2Int(1, 1));
+         this.StartOrLoadNewGame();
+        // this.playerController.Spawn(this.boardManager, new Vector2Int(1, 1));
 
     }
 
@@ -33,9 +36,24 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void StartOrLoadNewGame()
+    {
+        this.CreatePlayer();
+    }
+
+   void CreatePlayer()
+        {
+            this.playerController = Instantiate(this.playerController); 
+            // Camera.Follow = m_Player.transform;
+        
+            this.playerController.Init();
+          
+        }
+
+
     public void ChangeFoodAmount(int amount)
     {
         this.foodAmount += amount;
-      
+
     }
 }

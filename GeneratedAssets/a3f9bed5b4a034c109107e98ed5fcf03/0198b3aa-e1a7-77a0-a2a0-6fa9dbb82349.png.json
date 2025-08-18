@@ -1,0 +1,20 @@
+{
+    "asset": "a3f9bed5b4a034c109107e98ed5fcf03",
+    "fileName": "0198b3aa-e1a7-77a0-a2a0-6fa9dbb82349.png",
+    "prompt": "generate a sprite sheet a monster flying,i want 6 frames.monste for animation flying",
+    "negativePrompt": "extra legs",
+    "model": "242b56c1-2224-41c4-8949-2ba760bbfc69",
+    "modelName": "16-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "0c5c658296a08c0dec1b9e572ffe5494",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

@@ -1,0 +1,20 @@
+{
+    "asset": "8007fb8141afa41ae8c3a5e4eeb62316",
+    "fileName": "0198b3af-648c-7b39-af59-86a70c1471b3.png",
+    "prompt": "A flying monster resembling a dragon, designed in Studio Ghibli style, with 6 frames for a flying animation.",
+    "negativePrompt": "",
+    "model": "9119be98-fcff-405c-a1af-375ec1d026cd",
+    "modelName": "Little Monster Maker",
+    "customSeed": -1,
+    "w3CTraceId": "33fc80e8abf23e8cdc555b2a049d9614",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

@@ -1,0 +1,20 @@
+{
+    "asset": "3e0ce4fb8ec5744b4bea4ad8be1c40e6",
+    "fileName": "0198b3a9-09bf-7390-ae45-d5996440a9b4.png",
+    "prompt": "generate a sprite sheet a flying,i want 6 frames.",
+    "negativePrompt": "",
+    "model": "9119be98-fcff-405c-a1af-375ec1d026cd",
+    "modelName": "Little Monster Maker",
+    "customSeed": -1,
+    "w3CTraceId": "8b177286ef8886ff26cc55d6abd4eeaa",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

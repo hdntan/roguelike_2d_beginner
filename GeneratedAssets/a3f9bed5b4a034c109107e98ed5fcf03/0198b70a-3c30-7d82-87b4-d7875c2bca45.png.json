@@ -1,0 +1,29 @@
+{
+    "asset": "a3f9bed5b4a034c109107e98ed5fcf03",
+    "fileName": "0198b70a-3c30-7d82-87b4-d7875c2bca45.png",
+    "prompt": "Generate a dragon sprite in Ghibli style, \n64x64 pixels, transparent background, \nsame dragon character as previous frames, \npose: wings raised high, flying animation.",
+    "negativePrompt": "",
+    "model": "c65c79a0-b2af-46da-a8e5-2fc106ec2ab6",
+    "modelName": "RPG Chibis",
+    "customSeed": -1,
+    "w3CTraceId": "8e33a8d7de5e4c716ea5e2a3b9fc43c0",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 6,
+                "doodle": [],
+                "label": "Pose",
+                "strength": 0.8999999761581421,
+                "invertStrength": false,
+                "assetReferenceGuid": "86cbf57f9fda4472da9898d02253a7af"
+            }
+        ]
+    },
+    "upscaleFactor": 0
+}

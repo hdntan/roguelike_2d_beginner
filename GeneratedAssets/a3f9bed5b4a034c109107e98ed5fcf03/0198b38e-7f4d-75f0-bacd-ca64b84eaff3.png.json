@@ -1,0 +1,20 @@
+{
+    "asset": "a3f9bed5b4a034c109107e98ed5fcf03",
+    "fileName": "0198b38e-7f4d-75f0-bacd-ca64b84eaff3.png",
+    "prompt": "generate a sprite sheet a flying monster with style ghibli.Type of monster: Is it more like a dragon,6 frames i want for the flying animation",
+    "negativePrompt": "Transparent background, extra legs",
+    "model": "b7750d5b-62a0-457a-b21e-82f4c2789df5",
+    "modelName": "Hyper Casual Mobile Characters",
+    "customSeed": -1,
+    "w3CTraceId": "da88c592ad0ab1ca08c6c67070f1f322",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

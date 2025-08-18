@@ -1,0 +1,11 @@
+{
+    "asset": "2491d33d63fe64bd8a3970716a48ea25",
+    "fileName": "0198b3a2-8e3d-71e5-84bf-184b71a56ed4.pose.json",
+    "prompt": "animation cho character",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "modelName": "Text to Motion",
+    "customSeed": 26476087,
+    "w3CTraceId": "b72b15e8bfbe918a3bfa41c046807e06",
+    "isTrimmed": false
+}
