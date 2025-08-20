@@ -402,18 +402,18 @@ MonoBehaviour:
   widthTileMap: 8
   heightTileMap: 8
   groundTiles:
-  - {fileID: 11400000, guid: b0728153ac428455d83470ab397c05b8, type: 2}
-  - {fileID: 11400000, guid: b64c714b8b8ae4de685a35a10e5b0b62, type: 2}
-  - {fileID: 11400000, guid: 87f63630217a84c2c98711b5dd229d6e, type: 2}
-  - {fileID: 11400000, guid: 5032839d323cf425b8cdd89e5e3bbccc, type: 2}
-  - {fileID: 11400000, guid: dbdda521e73124d288bcf0d0f5410a64, type: 2}
-  - {fileID: 11400000, guid: e9a3c71d0719c49a9a7e2958cb811f85, type: 2}
-  - {fileID: 11400000, guid: c08f05928849c483ea8b8c9191adc092, type: 2}
-  - {fileID: 11400000, guid: ca2bdb5cb836b461f8c05ddc0a7f6a14, type: 2}
-  - {fileID: 11400000, guid: 401fe47faa40042e480ad5a66cb386f6, type: 2}
+  - {fileID: 11400000, guid: cd07179c813c446b3b6afefc8a44efe9, type: 2}
+  - {fileID: 11400000, guid: be0fa85f80f0b435f9004e1996e321f2, type: 2}
+  - {fileID: 11400000, guid: 0ce37c333024d483bba557a4de01a331, type: 2}
+  - {fileID: 11400000, guid: e66c9d139f3544c5b92dddadfc0273c7, type: 2}
+  - {fileID: 11400000, guid: 440374a7f10f049a7b7965861b9868d0, type: 2}
+  - {fileID: 11400000, guid: 6c19dcf6f10ab4c1196cf2f6b64575a6, type: 2}
+  - {fileID: 11400000, guid: 100b9e216b2c24a28a5d544a072b9add, type: 2}
+  - {fileID: 11400000, guid: 2075fddaadf8b446588884e78a4faabb, type: 2}
+  - {fileID: 11400000, guid: 278176c716e9a45aaa7f419054432b97, type: 2}
   wallTiles:
-  - {fileID: 11400000, guid: 670a2b4de9d4148afb31f73a03560e5e, type: 2}
-  - {fileID: 11400000, guid: 2e0853949f8834c13a8db40187970856, type: 2}
+  - {fileID: 11400000, guid: 23a4a863aa4b24d189d2b5462884f20c, type: 2}
+  - {fileID: 11400000, guid: e25bb9280608e46e8af4754321c7a699, type: 2}
   player: {fileID: 0}
   itemPrefab: {fileID: 5602554577319948168, guid: b0af8e419f4144e1096c9300ef12de22, type: 3}
   emptyCellsList: []

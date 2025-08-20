@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff0aee0b120842a3b7f095f15f48132, type: 3}
+  m_Name: SandWorldSO
+  m_EditorClassIdentifier: Assembly-CSharp::WorldSO
+  worldName: SandWorld
+  items: {fileID: 11400000, guid: f552192a3a6614576b6d1cf20bf95371, type: 2}
+  theme: {fileID: 11400000, guid: 45bf7e97bb128402e9fab93eef84573b, type: 2}
+  enemies: {fileID: 11400000, guid: 7012ef7be750c4704b2138b903df8069, type: 2}
+  levelDatas:
+  - Width: 8
+    Height: 8
+    LowestWallCount: 3
+    HighestWallCount: 5
+    Level: 1
+  - Width: 12
+    Height: 12
+    LowestWallCount: 5
+    HighestWallCount: 8
+    Level: 5
+  - Width: 16
+    Height: 16
+    LowestWallCount: 8
+    HighestWallCount: 11
+    Level: 10

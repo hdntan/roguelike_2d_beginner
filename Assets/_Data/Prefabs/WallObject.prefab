@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallObject
   id: 
-  wallTile: {fileID: 11400000, guid: a547cb2da9ed94e23bcfb5b15ddb05e3, type: 2}
-  wallTileDamaged: {fileID: 11400000, guid: cd0659e48c3e24e81a7ee9f8308edbf0, type: 2}
+  wallTile: {fileID: 11400000, guid: 594fe3c24a99042bd94e03296591881b, type: 2}
+  wallTileDamaged: {fileID: 11400000, guid: ab84fa4a67ab54fd4aa1b99ca7f010de, type: 2}
   maxHealth: 3
   originalTile: {fileID: 0}
   currentHealth: 0

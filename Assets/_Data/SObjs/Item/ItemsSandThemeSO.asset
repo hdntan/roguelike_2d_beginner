@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7646acb5bfd7c4972a1d6a7186e28cfb, type: 3}
+  m_Name: ItemsSandThemeSO
+  m_EditorClassIdentifier: Assembly-CSharp::ItemsSO
+  ItemsCount:
+  - Level: 1
+    Minimum: 1
+    Maximum: 2
+  - Level: 5
+    Minimum: 2
+    Maximum: 4
+  - Level: 10
+    Minimum: 3
+    Maximum: 6
+  Items:
+  - Item: {fileID: 2185801532222749895, guid: b0af8e419f4144e1096c9300ef12de22, type: 3}
+    Probabilities:
+    - Level: 1
+      Weight: 10
+    - Level: 5
+      Weight: 5
+  - Item: {fileID: 9103638748953364966, guid: 57d00889769ee4417ab7bd429dd7301e, type: 3}
+    Probabilities:
+    - Level: 1
+      Weight: 2
+    - Level: 5
+      Weight: 5

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4f0815c4650498a968e50620770b15, type: 3}
+  m_Name: SandWorldThemeSO
+  m_EditorClassIdentifier: Assembly-CSharp::WorldThemeSO
+  playerPrefab: {fileID: 1693520983560219859, guid: 475e165958dc74672a71ead1b4228b03, type: 3}
+  groundTiles:
+  - {fileID: 11400000, guid: cd07179c813c446b3b6afefc8a44efe9, type: 2}
+  - {fileID: 11400000, guid: be0fa85f80f0b435f9004e1996e321f2, type: 2}
+  - {fileID: 11400000, guid: 0ce37c333024d483bba557a4de01a331, type: 2}
+  - {fileID: 11400000, guid: e66c9d139f3544c5b92dddadfc0273c7, type: 2}
+  - {fileID: 11400000, guid: 440374a7f10f049a7b7965861b9868d0, type: 2}
+  - {fileID: 11400000, guid: 6c19dcf6f10ab4c1196cf2f6b64575a6, type: 2}
+  - {fileID: 11400000, guid: 100b9e216b2c24a28a5d544a072b9add, type: 2}
+  - {fileID: 11400000, guid: 2075fddaadf8b446588884e78a4faabb, type: 2}
+  - {fileID: 11400000, guid: 278176c716e9a45aaa7f419054432b97, type: 2}
+  wallTiles:
+  - {fileID: 11400000, guid: 23a4a863aa4b24d189d2b5462884f20c, type: 2}
+  - {fileID: 11400000, guid: e25bb9280608e46e8af4754321c7a699, type: 2}
+  wallPrefabs:
+  - {fileID: 9170982331721563685, guid: 0d73dc08948cb4fb6a06ba622e80c767, type: 3}
