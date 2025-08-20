@@ -359,16 +359,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
   uIDocument: {fileID: 0}
+  worldSettings:
+  - {fileID: 11400000, guid: 9cf96542ef56147cea08710c8968d308, type: 2}
   backgroundTilemap: {fileID: 0}
-  groundTiles:
-  - {fileID: 11400000, guid: b64c714b8b8ae4de685a35a10e5b0b62, type: 2}
-  - {fileID: 11400000, guid: 401fe47faa40042e480ad5a66cb386f6, type: 2}
-  - {fileID: 11400000, guid: 5032839d323cf425b8cdd89e5e3bbccc, type: 2}
-  - {fileID: 11400000, guid: b0728153ac428455d83470ab397c05b8, type: 2}
-  - {fileID: 11400000, guid: a547cb2da9ed94e23bcfb5b15ddb05e3, type: 2}
-  - {fileID: 11400000, guid: 178b6ab6b85fe491f8a94c996fcf43d4, type: 2}
-  - {fileID: 11400000, guid: 670a2b4de9d4148afb31f73a03560e5e, type: 2}
-  - {fileID: 11400000, guid: cd0659e48c3e24e81a7ee9f8308edbf0, type: 2}
+  selectedSettings: {fileID: 0}
 --- !u!1 &2065219756
 GameObject:
   m_ObjectHideFlags: 0
