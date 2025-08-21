@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
 
 
     [SerializeField] private DropdownField worldSettingsThemeDropdown;
-    [SerializeField] private WorldSO selectedSettings;
+    [SerializeField] private WorldSO currentWorldSettings;
 
 
     private void Awake()
@@ -30,14 +30,15 @@ public class MainMenu : MonoBehaviour
         newButton.clicked += StartNewGame;
         quitButton.clicked += Application.Quit;
 
-        this.selectedSettings = this.worldSettings[0];
+        this.currentWorldSettings = this.worldSettings[0];
+
         var worldNames = this.worldSettings.Select(settings => settings.worldName).ToList();
         this.worldSettingsThemeDropdown.choices = worldNames;
 
 
         this.worldSettingsThemeDropdown.RegisterValueChangedCallback(evt =>
         {
-            this.selectedSettings = this.worldSettings[this.worldSettingsThemeDropdown.index];
+            this.currentWorldSettings = this.worldSettings[this.worldSettingsThemeDropdown.index];
             FillBackgroundFromTheme();
         });
         this.worldSettingsThemeDropdown.index = 0;
@@ -45,7 +46,8 @@ public class MainMenu : MonoBehaviour
 
     void StartNewGame()
     {
-
+        CrossSceneDataStore.CreateNewInstance();
+        CrossSceneDataStore.Instance.selectedWorldSettings = this.currentWorldSettings;
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
@@ -55,7 +57,7 @@ public class MainMenu : MonoBehaviour
         {
             for (int x = -50; x < 50; ++x)
             {
-                this.backgroundTilemap.SetTile(new Vector3Int(x, y, 0), this.selectedSettings.theme.GetRandomGround());
+                this.backgroundTilemap.SetTile(new Vector3Int(x, y, 0), this.currentWorldSettings.theme.GetRandomGround());
             }
         }
     }

@@ -126,7 +126,7 @@ public class Enemy : AttackableCellObject
 
     void TurnHappened()
     {
-        var playerCell = GameManager.Instance.playerController.CellPosition; ;
+        var playerCell = GameManager.Instance.player.CellPosition; ;
 
         int xDist = playerCell.x - this.cell.x;
         int yDist = playerCell.y - this.cell.y;

@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -4432526410112080916, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+  m_Sprite: {fileID: -348181718, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,6 +111,9 @@ MonoBehaviour:
   moveTarget: {x: 0, y: 0, z: 0}
   isMoving: 0
   moveSpeed: 2
+  startAttack: 1
+  startDefense: 0
+  startSpeed: 1
 --- !u!95 &8379276085590118589
 Animator:
   serializedVersion: 7
@@ -190,7 +193,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

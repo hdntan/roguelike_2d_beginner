@@ -1,12 +1,20 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public BoardManager boardManager;
-    public PlayerController playerController;
+    public PlayerController player;
     public TurnManager turnManager;
-    
+
+    public WorldSO worldSetingsSO;
+
+    public int currentLevel = 1;
+
+    public CinemachineCamera camera;
+    public CinemachineConfiner2D cameraConfiner;
+
 
 
     public int foodAmount = 100;
@@ -19,13 +27,19 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+
+        if (CrossSceneDataStore.Instance != null)
+        {
+            this.worldSetingsSO = CrossSceneDataStore.Instance.selectedWorldSettings;
+        }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        this.cameraConfiner = camera.GetComponent<CinemachineConfiner2D>();
         this.turnManager = new TurnManager();
         this.boardManager.Init();
-         this.StartOrLoadNewGame();
+        this.StartOrLoadNewGame();
         // this.playerController.Spawn(this.boardManager, new Vector2Int(1, 1));
 
     }
@@ -41,14 +55,15 @@ public class GameManager : MonoBehaviour
         this.CreatePlayer();
     }
 
-   void CreatePlayer()
-        {
-            this.playerController = Instantiate(this.playerController); 
-            // Camera.Follow = m_Player.transform;
-        
-            this.playerController.Init();
-          
-        }
+    void CreatePlayer()
+    {
+        this.player = Instantiate(this.worldSetingsSO.theme.playerPrefab);
+        camera.Follow = this.player.transform;
+
+        this.player.Init();
+        Debug.Log("Player created and initialized.");   
+
+    }
 
 
     public void ChangeFoodAmount(int amount)

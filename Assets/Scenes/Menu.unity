@@ -362,7 +362,7 @@ MonoBehaviour:
   worldSettings:
   - {fileID: 11400000, guid: 9cf96542ef56147cea08710c8968d308, type: 2}
   backgroundTilemap: {fileID: 0}
-  selectedSettings: {fileID: 0}
+  currentWorldSettings: {fileID: 0}
 --- !u!1 &2065219756
 GameObject:
   m_ObjectHideFlags: 0

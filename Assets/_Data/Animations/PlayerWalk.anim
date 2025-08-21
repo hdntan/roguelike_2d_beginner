@@ -21,19 +21,21 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -9114844809166226048, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
-    - time: 0.33333334
-      value: {fileID: 4259558549764314536, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
-    - time: 0.6666667
-      value: {fileID: 3165503798289666931, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+      value: {fileID: 1147756304, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+    - time: 0.25
+      value: {fileID: 1555719591, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+    - time: 0.5
+      value: {fileID: 2127781975, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+    - time: 0.75
+      value: {fileID: -808292774, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
     - time: 1
-      value: {fileID: 7300884267833562988, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+      value: {fileID: 2088384724, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 3
+  m_SampleRate: 4
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -50,16 +52,17 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -9114844809166226048, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
-    - {fileID: 4259558549764314536, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
-    - {fileID: 3165503798289666931, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
-    - {fileID: 7300884267833562988, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+    - {fileID: 1147756304, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+    - {fileID: 1555719591, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+    - {fileID: 2127781975, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+    - {fileID: -808292774, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
+    - {fileID: 2088384724, guid: 2315cc0495cb2054ea5dd392c1cff51e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.3333334
+    m_StopTime: 1.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
